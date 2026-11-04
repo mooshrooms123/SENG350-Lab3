@@ -37,7 +37,7 @@ public class Client {
             try {
 
                 CallbackImp callbackImp = new CallbackImp(chatManagerPrx);
-                ObjectAdapter adapter = communicator.createObjectAdapter("Callback");
+                ObjectAdapter adapter = communicator.createObjectAdapter("Callback"); //makes adapter start listening to port 6970
                 ObjectPrx objectPrx = adapter.add(callbackImp, Util.stringToIdentity("Callback"));
                 adapter.activate();
 
@@ -65,7 +65,7 @@ public class Client {
 
                     // pick the tag based on the percentage
                     String tag = "NORMAL";
-                    if (i % 100 < percent) {
+                    if ((i + 1) * percent / 100 > i * percent / 100) {
                         tag = "GENERALINTEREST";
                     }
 
