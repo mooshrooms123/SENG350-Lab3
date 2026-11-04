@@ -1,4 +1,4 @@
-module Demo
+/* module Demo
 {
     sequence<string> StringSeq;
 
@@ -19,7 +19,7 @@ module Demo
 
 
 }
-
+*/
 //new version of the Callback.ice design
 
 module BusSystem
