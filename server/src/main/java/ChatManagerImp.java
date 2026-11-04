@@ -19,7 +19,7 @@ public class ChatManagerImp implements BusSystem.OperationsControlCenter {
     //private CallbackPrx callbackPrx;
 
     // CHANGE THIS to your team number, like "team7"
-    private static final String TEAM_FOLDER = "team#";
+    private static final String TEAM_FOLDER = "team25";
 
     // All the buses that subscribed. This list type is safe to use from many threads.
     private List<BusObserverPrx> subscribers = new CopyOnWriteArrayList<>();
