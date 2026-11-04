@@ -1,0 +1,6 @@
+build/
+bin/
+.gradle/
+.DS_Store
+team*/
+[0-9]*/
