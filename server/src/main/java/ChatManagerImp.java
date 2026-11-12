@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 //import java.util.concurrent.Semaphore;
+import java.time.LocalDateTime;
 
 import com.zeroc.Ice.Current;
 
@@ -100,14 +101,16 @@ public class ChatManagerImp implements BusSystem.OperationsControlCenter {
         }
     }
 
-    // Saves the image to ./team#/<busId>/
+    // Saves the image to ./team#/texttag-YYYY-MM-DD-H24:MI:SS.jpg
     private void saveImage(BusImage busImage) throws Exception {
         File folder = new File(TEAM_FOLDER + "/" + busImage.busId);
 
         // Make the folder if it doesn't exist yet
         folder.mkdirs();
 
-        File imageFile = new File(folder, "image_" + nextImageNumber() + ".jpg");
+        LocalDateTime now = LocalDateTime.now();
+
+        File imageFile = new File(folder, "image_" + nextImageNumber() + now + ".jpg");
         Files.write(imageFile.toPath(), busImage.image);
     }
 
