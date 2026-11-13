@@ -1,8 +1,8 @@
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class ImageGenerator {
@@ -12,20 +12,23 @@ public class ImageGenerator {
 
         File folder = new File(busId);
         folder.mkdirs();
-        Random random = new Random();
+        
+        // Initialize Robot for screen capturing and get the main display size
+        Robot robot = new Robot();
+        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
 
         for (int i = 0; i < numImages; i++) {
-            BufferedImage image = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
-            Graphics2D graphics = image.createGraphics();
+            // Take the screenshot
+            BufferedImage screenCapture = robot.createScreenCapture(screenRect);
 
-            // Draw random rectangles so the images aren't all the same
-            for (int j = 0; j < 500; j++) {
-                graphics.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
-                graphics.fillRect(random.nextInt(1920), random.nextInt(1080), 50 + random.nextInt(200), 50 + random.nextInt(200));
+            // Save the screenshot to the folder
+            ImageIO.write(screenCapture, "jpg", new File(folder, "image_" + i + ".jpg"));
+            System.out.println("Captured screenshot " + (i + 1) + " of " + numImages);
+
+            // Wait 1 second before the next screenshot (skip delay on the last image)
+            if (i < numImages - 1) {
+                Thread.sleep(1000);
             }
-
-            graphics.dispose();
-            ImageIO.write(image, "jpg", new File(folder, "image_" + i + ".jpg"));
         }
     }
 }
