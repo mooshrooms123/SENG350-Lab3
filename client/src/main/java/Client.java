@@ -66,7 +66,7 @@ public class Client {
                     // pick the tag based on the percentage
                     String tag = "NORMAL";
                     if ((i + 1) * percent / 100 > i * percent / 100) {
-                        tag = "GENERALINTEREST";
+                        tag = "CRITICAL";
                     }
 
                     String timestamp = LocalDateTime.now().format(format);

@@ -1,0 +1,46 @@
+Clients Receive: directory_name max_images send_frequency percent_tagged
+Image Generator: file_name number_images
+
+
+
+
+Experiment 2a:
+java ImageGenerator.java 311 300
+java ImageGenerator.java 312 300
+java ImageGenerator.java 313 300
+
+java -jar client/build/libs/client.jar 311 300 200 0
+java -jar client/build/libs/client.jar 312 300 200 0
+java -jar client/build/libs/client.jar 313 300 200 0
+
+
+Experiment 2b:
+java ImageGenerator.java 411 600
+java ImageGenerator.java 412 600
+java ImageGenerator.java 413 600
+
+java -jar client/build/libs/client.jar 411 600 200 0
+java -jar client/build/libs/client.jar 412 600 200 0
+java -jar client/build/libs/client.jar 413 600 200 0
+
+______________________________________________________________________
+
+
+Experiment  3a:
+java ImageGenerator.java 511 600
+java ImageGenerator.java 512 600
+java ImageGenerator.java 513 600
+
+java -jar client/build/libs/client.jar 511 600 200 50
+java -jar client/build/libs/client.jar 512 600 200 50
+java -jar client/build/libs/client.jar 513 600 200 50
+
+
+Experiment  3a:
+java ImageGenerator.java 611 600
+java ImageGenerator.java 612 600
+java ImageGenerator.java 613 600
+
+java -jar client/build/libs/client.jar 611 600 200 100
+java -jar client/build/libs/client.jar 612 600 200 100
+java -jar client/build/libs/client.jar 613 600 200 100

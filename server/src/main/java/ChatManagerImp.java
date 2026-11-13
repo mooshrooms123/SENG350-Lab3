@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 //import java.util.concurrent.Semaphore;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.zeroc.Ice.Current;
 
@@ -109,8 +110,12 @@ public class ChatManagerImp implements BusSystem.OperationsControlCenter {
         folder.mkdirs();
 
         LocalDateTime now = LocalDateTime.now();
+        
+        // Define the exact format we are required from the lab manual (HH is 24-hour clock, mm is minutes, ss is 2-digit seconds)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
+        String formattedTime = now.format(formatter);
 
-        File imageFile = new File(folder, "image_" + nextImageNumber() + now + ".jpg");
+        File imageFile = new File(folder, "image_" + nextImageNumber() + "-" + formattedTime + ".jpg");
         Files.write(imageFile.toPath(), busImage.image);
     }
 
